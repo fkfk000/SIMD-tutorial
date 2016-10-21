@@ -25,7 +25,7 @@ vector<double> testAdd(vector<double> &x,vector<double> &y)
 在这个时候还有另外一条路，那就是矢量化（vectorization）。这个时候需要一种叫SIMD（Single instruction, multiple data ），即多个数据用一条指令执行。
 
 ##何为SIMD
-
+![Image of SIMD](https://github.com/fkfk000/SIMD-tutorial/blob/master/SIMD2.svg.png)
 
 
 
