@@ -22,6 +22,13 @@ vector<double> testAdd(vector<double> &x,vector<double> &y)
 
 如何将计算这个函数的时间缩短呢？当然，我自己最直接的想法是并行化。并行化也很适合用在这个情况下。但是呢，that is a story for another day。
 
+在这个时候还有另外一条路，那就是矢量化（vectorization）。这个时候需要一种叫SIMD（Single instruction, multiple data ），即多个数据用一条指令执行。
+
+##何为SIMD
+
+
+
+
 
 先看一个简单的例子：
 ```c++
