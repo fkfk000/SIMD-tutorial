@@ -15,7 +15,7 @@ vector<double> testAdd(vector<double> &x,vector<double> &y)
         z[i]=x[i]+y[i];
     }
     return z;
-    
+
 }
 ```
 这里我们定义了一个testAdd，测试用的函数。这个函数的用处就是输入两个矢量，将它们相加，然后将结果输出。假如X、Y的长度都是N，那么要经过N次加法，才能得到最后的结果。如果N很长的话，那么消耗的时间就会很长。
@@ -26,6 +26,13 @@ vector<double> testAdd(vector<double> &x,vector<double> &y)
 
 ##何为SIMD
 ![Image of SIMD](https://github.com/fkfk000/SIMD-tutorial/blob/master/SIMD2.svg.png)
+SIMD是所谓的多数据单指令系统，是CPU的指令集的扩展。使用一个指令，同时对多个数据进行操作。
+
+
+
+上图是一个典型的64位处理器的架构，这里面有很多好玩的内容。但是让我们首先先注意到右下角的XMM寄存器，从XMM0到XMM15，共16个128位的寄存器。这些寄存器，每个都可以存储128位的数据，比如4个float类型的数或者两个double类型的数。通过控制指令，直接对这些寄存器进行操作。每操作一次，就相当于同时对4个float类型的数进行操作。那么速度自然也就是普通操作的4倍了（如果换成double的话就是两倍）。当然，这里假设CPU每次执行单个命令的时间是一样的。
+
+
 
 
 
