@@ -26,8 +26,11 @@ vector<double> testAdd(vector<double> &x,vector<double> &y)
 
 ##何为SIMD
 ![Image of SIMD](https://github.com/fkfk000/SIMD-tutorial/blob/master/SIMD2.svg.png)
+
 SIMD是所谓的多数据单指令系统，是CPU的指令集的扩展。使用一个指令，同时对多个数据进行操作。
 
+
+![Image of SIMD explan](https://github.com/fkfk000/SIMD-tutorial/blob/master/2016-10-22%209.42.55.png)
 
 
 上图是一个典型的64位处理器的架构，这里面有很多好玩的内容。但是让我们首先先注意到右下角的XMM寄存器，从XMM0到XMM15，共16个128位的寄存器。这些寄存器，每个都可以存储128位的数据，比如4个float类型的数或者两个double类型的数。通过控制指令，直接对这些寄存器进行操作。每操作一次，就相当于同时对4个float类型的数进行操作。那么速度自然也就是普通操作的4倍了（如果换成double的话就是两倍）。当然，这里假设CPU每次执行单个命令的时间是一样的。
@@ -36,9 +39,10 @@ SIMD是所谓的多数据单指令系统，是CPU的指令集的扩展。使用�
 
 
 
+##如何使用
 
 先看一个简单的例子：
-```c++
+```
 #include <iostream>
 //#include <immintrin.h>
 #include <x86intrin.h>
@@ -58,3 +62,5 @@ int main()
 }
 ```
 要是用SIMD技术，首先需要载入头文件。`#include <x86intrin.h>`在这里我取了个巧，直接include了x86intrin.h这个头文件。
+
+这里_mm256d代表的是的一个长度为256比特的寄存器，d代表里面装入的数据是double类型。也就是说t声名为一个256比特长度的可以装入四个double类型数据的寄存器。然后load指令代表将数组里的数据转换成寄存器的数据。然后store意味着再转换回去。
